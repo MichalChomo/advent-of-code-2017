@@ -15,9 +15,7 @@ def is_valid_line(line):
 with open("day4_input", 'r') as infile:
     total = 0
     for line in infile:
-        line = line.replace('\n', '')
-        if len(line) != 0:
-            if is_valid_line(line):
-                total += 1
+        if is_valid_line(line):
+            total += 1
 
 print(total)
