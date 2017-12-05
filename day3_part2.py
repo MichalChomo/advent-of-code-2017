@@ -36,15 +36,13 @@ def change_direction(direction):
     return Direction((direction.value + 1) % 4)
 
 def get_square_sum(coords, mat):
-    total = 0
-    for i in range(coords.y-1, coords.y+2):
-        for j in range(coords.x-1, coords.x+2):
-            if i < 0 or j < 0: continue
-            try:
-                total += mat[i,j]
-            except:
-                pass
-    return total
+    max_index = math.sqrt(mat.size)
+    return sum([
+            mat[i, j]
+            for i in range(coords.y-1, coords.y+2)
+            for j in range(coords.x-1, coords.x+2)
+            if (-1 < i < max_index) and (-1 < j < max_index)
+        ])
 
 def resize_mat(n, coords, mat):
     tmp = np.zeros((n+2, n+2), dtype=np.int)
@@ -66,7 +64,7 @@ coords = Coords(1, 1)
 steps = 1
 direction = Direction.RIGHT
 while mat[coords.y, coords.x] < input_num:
-    for two in range(2):
+    for _ in range(2):
         for i in range(steps):
             coords.do_step(direction)
             if bounds_reached(coords, mat):
