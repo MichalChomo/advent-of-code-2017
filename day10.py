@@ -23,7 +23,7 @@ def knot_hash_round(lengths, circle):
 
 
 with open("day10_input") as infile:
-    lengths = [int(x) for line in infile for x in line.split(',') if x != '\n']
+    lengths = list(map(int, infile.readline().split(',')))
 CIRCLE_LEN = 256
 skip_size = 0
 cur_pos = 0
@@ -32,7 +32,7 @@ circle = knot_hash_round(lengths, circle)
 print(circle[0] * circle[1])
 
 with open("day10_input") as infile:
-    lengths2 = [ord(x) for line in infile for x in line if x != '\n']
+    lengths2 = [ord(x) for line in infile for x in line]
 lengths2 += [17, 31, 73, 47, 23]
 skip_size = 0
 cur_pos = 0
