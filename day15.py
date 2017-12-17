@@ -1,18 +1,12 @@
-mod = 2147483647
-fac_a = 16807
-fac_b = 48271
-total = 0
-val_a = 722
-val_b = 354
+(mod, fac_a, fac_b) = (2147483647, 16807, 48271)
+(total, val_a, val_b) = (0, 722, 354)
 for _ in range(40000000):
     val_a = (val_a * fac_a) % mod
     val_b = (val_b * fac_b) % mod
     if (val_a & 0xffff) == (val_b & 0xffff):
         total += 1
 print(total)
-total = 0
-val_a = 722
-val_b = 354
+(total, val_a, val_b) = (0, 722, 354)
 for _ in range(5000000):
     val_a = (val_a * fac_a) % mod
     while (val_a % 4) != 0:
